@@ -19,8 +19,8 @@ public class ConnectDB {
     // Assign values ​​for connection db mysql
     private static final String DB_URL = "jdbc:mysql://localhost:3306/airafpa";
     private static final String DB_JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_USER = "afpa";
-    private static final String DB_PASSWORD = "afpa";
+    private static final String DB_USER = "ProjetEval14";
+    private static final String DB_PASSWORD = "ProjetEval14";
 
     private Connection cn = null;
 
