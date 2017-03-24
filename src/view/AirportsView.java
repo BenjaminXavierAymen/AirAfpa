@@ -5,6 +5,8 @@
  */
 package view;
 
+import controller.AirportController;
+
 /**
  *
  * @author Formation
@@ -16,6 +18,8 @@ public class AirportsView extends javax.swing.JPanel {
      */
     public AirportsView() {
         initComponents();
+        AirportController airportController = new AirportController();
+        jt_Airport = airportController.addRowTable(jt_Airport);
     }
 
     /**
@@ -30,7 +34,7 @@ public class AirportsView extends javax.swing.JPanel {
 
         jp_tabAirport = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableAirport = new javax.swing.JTable();
+        jt_Airport = new javax.swing.JTable();
         jp_updateTabAirport = new javax.swing.JPanel();
         jl_city = new javax.swing.JLabel();
         jl_country = new javax.swing.JLabel();
@@ -44,14 +48,11 @@ public class AirportsView extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridLayout(2, 1));
 
-        jp_tabAirport.setLayout(new java.awt.GridLayout());
+        jp_tabAirport.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTableAirport.setModel(new javax.swing.table.DefaultTableModel(
+        jt_Airport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "code AITA", "ville", "pays"
@@ -72,11 +73,11 @@ public class AirportsView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableAirport);
-        if (jTableAirport.getColumnModel().getColumnCount() > 0) {
-            jTableAirport.getColumnModel().getColumn(0).setResizable(false);
-            jTableAirport.getColumnModel().getColumn(1).setResizable(false);
-            jTableAirport.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(jt_Airport);
+        if (jt_Airport.getColumnModel().getColumnCount() > 0) {
+            jt_Airport.getColumnModel().getColumn(0).setResizable(false);
+            jt_Airport.getColumnModel().getColumn(1).setResizable(false);
+            jt_Airport.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jp_tabAirport.add(jScrollPane1);
@@ -187,12 +188,12 @@ public class AirportsView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableAirport;
     private javax.swing.JLabel jl_aita;
     private javax.swing.JLabel jl_city;
     private javax.swing.JLabel jl_country;
     private javax.swing.JPanel jp_tabAirport;
     private javax.swing.JPanel jp_updateTabAirport;
+    private javax.swing.JTable jt_Airport;
     private javax.swing.JTextField jt_aita;
     private javax.swing.JTextField jt_city;
     private javax.swing.JTextField jt_country;
