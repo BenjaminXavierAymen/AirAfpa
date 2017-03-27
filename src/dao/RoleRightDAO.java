@@ -16,6 +16,8 @@ import model.RoleRight;
 /**
  *
  * @author Salim El Moussaoui <salim.elmoussaoui.afpa2017@gmail.com>
+ * @author Cedric DELHOME
+ * @author Laure-Helene Soyeux
  */
 public class RoleRightDAO extends DAO<RoleRight, Long> {
 

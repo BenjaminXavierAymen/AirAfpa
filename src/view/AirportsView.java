@@ -10,7 +10,7 @@ import java.awt.TextField;
 
 /**
  *
- * @author Formation
+ * @author SEGHAIER
  */
 public class AirportsView extends javax.swing.JPanel {
 
@@ -146,6 +146,11 @@ public class AirportsView extends javax.swing.JPanel {
         jp_updateTabAirport.add(pb_reset, gridBagConstraints);
 
         pb_delete.setText("supprimer");
+        pb_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pb_deleteActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 15;
         gridBagConstraints.gridy = 4;
@@ -225,6 +230,11 @@ public class AirportsView extends javax.swing.JPanel {
         jt_city.setText(city);
         jt_country.setText(country);
     }//GEN-LAST:event_jt_AirportKeyReleased
+
+    private void pb_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_deleteActionPerformed
+        String requete = "DELETE FROM airports WHERE aita LIKE ?";
+        
+    }//GEN-LAST:event_pb_deleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
