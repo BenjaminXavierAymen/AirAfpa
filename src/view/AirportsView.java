@@ -6,6 +6,7 @@
 package view;
 
 import controller.AirportController;
+import java.awt.TextField;
 
 /**
  *
@@ -71,6 +72,19 @@ public class AirportsView extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jt_Airport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_AirportMouseClicked(evt);
+            }
+        });
+        jt_Airport.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jt_AirportKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jt_AirportKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(jt_Airport);
@@ -174,7 +188,8 @@ public class AirportsView extends javax.swing.JPanel {
     }//GEN-LAST:event_jt_cityActionPerformed
 
     private void jt_aitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_aitaActionPerformed
-        // TODO add your handling code here:
+        
+        jt_aita.setText(jp_tabAirport.getToolTipText());
     }//GEN-LAST:event_jt_aitaActionPerformed
 
     private void pb_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_resetActionPerformed
@@ -184,6 +199,32 @@ public class AirportsView extends javax.swing.JPanel {
     private void pb_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_updateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pb_updateActionPerformed
+
+    private void jt_AirportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_AirportMouseClicked
+        
+        int ligne = jt_Airport.getSelectedRow();
+        String aita =  jt_Airport.getModel().getValueAt(ligne, 0).toString();
+        String city =  jt_Airport.getModel().getValueAt(ligne, 1).toString();
+        String country =  jt_Airport.getModel().getValueAt(ligne, 2).toString();
+        jt_aita.setText(aita);
+        jt_city.setText(city);
+        jt_country.setText(country);
+        
+    }//GEN-LAST:event_jt_AirportMouseClicked
+
+    private void jt_AirportKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_AirportKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_AirportKeyPressed
+
+    private void jt_AirportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_AirportKeyReleased
+        int ligne = jt_Airport.getSelectedRow();
+        String aita =  jt_Airport.getModel().getValueAt(ligne, 0).toString();
+        String city =  jt_Airport.getModel().getValueAt(ligne, 1).toString();
+        String country =  jt_Airport.getModel().getValueAt(ligne, 2).toString();
+        jt_aita.setText(aita);
+        jt_city.setText(city);
+        jt_country.setText(country);
+    }//GEN-LAST:event_jt_AirportKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
