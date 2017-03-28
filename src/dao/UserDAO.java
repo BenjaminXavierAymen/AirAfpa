@@ -51,7 +51,7 @@ public class UserDAO extends DAO<User, Long> {
                         + ") VALUES (?,?,?,?,?,?,?,?)";
                 // prepared requete and get return generated key
                 PreparedStatement pst = this.bddmanager.getConnectionManager()
-                        .prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
+                    .prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
                 // insert value in requete
                 pst.setString(1, user.getFirstname());
                 pst.setString(2, user.getLastname());
@@ -260,7 +260,7 @@ public class UserDAO extends DAO<User, Long> {
                 Statement st = this.bddmanager.getConnectionManager()
                         .createStatement();
                 // create requete add primary key
-                String requete = "SELECT * FROM users WHERE id = " + primary_key;
+               String requete = "SELECT * FROM users WHERE id = " + primary_key;
                 // excute requete
                 ResultSet rs = st.executeQuery(requete);
                 // if result is full
@@ -306,5 +306,40 @@ public class UserDAO extends DAO<User, Long> {
 
         return isValid;
     }
+    
+ 
+    public ArrayList<Long> getAll(String function) {
+        // create array list user empty
+        ArrayList<Long> listUser = new ArrayList<>();
+        if (this.bddmanager.connect()) {
 
+            try {
+                // create statement 
+                Statement st = this.bddmanager
+                        .getConnectionManager()
+                        .createStatement();
+                // create requete 
+                String requete = "SELECT users.id FROM users JOIN functions ON functions.id=users.function WHERE functions.definition LIKE '"+ function + "'";
+                // excute requete
+                ResultSet rs = st.executeQuery(requete);
+                // insert all users in array object user
+
+                while (rs.next()) {
+
+                    listUser.add(rs.getLong("id"));
+
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                return listUser;
+            }
+
+        } else {
+            return listUser;
+        }
+
+        return listUser;
+    }
+ 
 }
