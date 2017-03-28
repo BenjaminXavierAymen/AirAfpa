@@ -44,7 +44,7 @@ public class AirportsView extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridLayout(2, 1));
 
-        jp_tabAirport.setLayout(new java.awt.GridLayout());
+        jp_tabAirport.setLayout(new java.awt.GridLayout(1, 0));
 
         jTableAirport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

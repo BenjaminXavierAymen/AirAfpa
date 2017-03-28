@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Formation
@@ -156,6 +158,34 @@ public class InterfaceView extends javax.swing.JFrame {
                 new InterfaceView().setVisible(true);
             }
         });
+    }
+
+    public JButton getPb_airports() {
+        return pb_airports;
+    }
+
+    public JButton getPb_newAirports() {
+        return pb_newAirports;
+    }
+
+    public JButton getPb_newFlight() {
+        return pb_newFlight;
+    }
+
+    public JButton getPb_newUser() {
+        return pb_newUser;
+    }
+
+    public JButton getPb_programmedFlight() {
+        return pb_programmedFlight;
+    }
+
+    public JButton getPb_users() {
+        return pb_users;
+    }
+
+    public JButton getPb_waitingFlight() {
+        return pb_waitingFlight;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

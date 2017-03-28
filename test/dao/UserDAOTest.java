@@ -5,9 +5,13 @@
  */
 package dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import model.User;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -149,4 +153,27 @@ public class UserDAOTest {
         String result = userDAO.find(primary_key).toString();
         assertEquals(expResult, result);
     }
+    
+   /* @Test
+    public void testQuery(){
+    
+        System.out.println("query");    
+        UserDAO userDAo = new UserDAO();
+        
+        long expResult = 1;
+        long result=0L;
+        ResultSet rs = userDAo.queryBuilder("Select users.id FROM users JOIN functions ON functions.id = users.function WHERE functions.definition=\"Pilote\"");
+        
+        try {
+            rs.next();
+            result = rs.getLong("id");
+            System.out.println(result);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println(expResult);
+
+    assertEquals(expResult, result);
+    
+    }*/
 }

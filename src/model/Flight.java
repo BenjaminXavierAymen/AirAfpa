@@ -12,10 +12,15 @@ import java.util.Objects;
  * @author Salim El Moussaoui <salim.elmoussaoui.afpa2017@gmail.com>
  */
 public class Flight {
+
     // name columns in table flights
     private long id;
     private String departing_aita;
+//    private String departing_city;
+//    private String departing_country;
     private String arrival_aita;
+//    private String arrival_city;
+//    private String arrival_country;
     private String departing_hour;
     private int duration;
     private double price;
@@ -25,7 +30,8 @@ public class Flight {
     private long id_staff2;
     private long id_staff3;
     private boolean planned;
-    
+    private InOut detailsAirport;
+
     // this construct create flight empty 
     public Flight() {
         this.id = 0;
@@ -40,12 +46,15 @@ public class Flight {
         this.id_staff2 = 0;
         this.id_staff3 = 0;
         this.planned = false;
+        
+        this.detailsAirport = new InOut();
     }
-     // this construct create flight full
+    // this construct create flight full
+
     public Flight(
-            long id, String departing_aita, String arrival_aita, 
-            String departing_hour, int duration, double price, long id_pilot, 
-            long id_copilot, long id_staff1, long id_staff2, long id_staff3, 
+            long id, String departing_aita, String arrival_aita,
+            String departing_hour, int duration, double price, long id_pilot,
+            long id_copilot, long id_staff1, long id_staff2, long id_staff3,
             boolean planned) {
         this.id = id;
         this.departing_aita = departing_aita;
@@ -59,6 +68,23 @@ public class Flight {
         this.id_staff2 = id_staff2;
         this.id_staff3 = id_staff3;
         this.planned = planned;
+        
+        this.detailsAirport = new InOut();
+    }
+
+    public Flight(long aLong, String string, String string0, String string1, String string2, String string3, String string4, String string5, int aInt, double aDouble, int aInt0, int aInt1, int aInt2, int aInt3, int aInt4, boolean aBoolean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public InOut getDetailsAirport() {
+        return detailsAirport;
+    }
+
+    public void setDetailsAirport(String departingCity,String departingCountry,String arivalCity, String arivalCountry) {
+        this.detailsAirport.arrivalCity=arivalCity;
+        this.detailsAirport.arrivalCountry=arivalCountry;
+        this.detailsAirport.departingCity=departingCity;
+        this.detailsAirport.departingCountry=departingCountry;
     }
 
     public long getId() {
@@ -112,6 +138,7 @@ public class Flight {
     public void setId(long id) {
         this.id = id;
     }
+
     public void setDeparting_aita(String departing_aita) {
         this.departing_aita = departing_aita;
     }
@@ -158,30 +185,25 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight{" + "id=" + id + ", departing_aita=" + departing_aita 
-                + ", arrival_aita=" + arrival_aita + ", departing_hour=" + 
-                departing_hour + ", duration=" + duration + ", price=" + price 
-                + ", id_pilot=" + id_pilot + ", id_copilot=" + id_copilot 
-                + ", id_staff1=" + id_staff1 + ", id_staff2=" + id_staff2 
-                + ", id_staff3=" + id_staff3 + ", planned=" + planned + '}';
+        return "Flight{" + "id=" + id + ", departing_aita=" + departing_aita + ", arrival_aita=" + arrival_aita + ", detailsAirport=" + detailsAirport + ", departing_hour=" + departing_hour + ", duration=" + duration + ", price=" + price + ", id_pilot=" + id_pilot + ", id_copilot=" + id_copilot + ", id_staff1=" + id_staff1 + ", id_staff2=" + id_staff2 + ", id_staff3=" + id_staff3 + ", planned=" + planned + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.departing_aita);
-        hash = 29 * hash + Objects.hashCode(this.arrival_aita);
-        hash = 29 * hash + Objects.hashCode(this.departing_hour);
-        hash = 29 * hash + this.duration;
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.price) ^ 
-                            (Double.doubleToLongBits(this.price) >>> 32));
-        hash = 29 * hash + (int) (this.id_pilot ^ (this.id_pilot >>> 32));
-        hash = 29 * hash + (int) (this.id_copilot ^ (this.id_copilot >>> 32));
-        hash = 29 * hash + (int) (this.id_staff1 ^ (this.id_staff1 >>> 32));
-        hash = 29 * hash + (int) (this.id_staff2 ^ (this.id_staff2 >>> 32));
-        hash = 29 * hash + (int) (this.id_staff3 ^ (this.id_staff3 >>> 32));
-        hash = 29 * hash + (this.planned ? 1 : 0);
+        hash = 47 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.departing_aita);
+        hash = 47 * hash + Objects.hashCode(this.arrival_aita);
+        hash = 47 * hash + Objects.hashCode(this.detailsAirport);
+        hash = 47 * hash + Objects.hashCode(this.departing_hour);
+        hash = 47 * hash + this.duration;
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        hash = 47 * hash + (int) (this.id_pilot ^ (this.id_pilot >>> 32));
+        hash = 47 * hash + (int) (this.id_copilot ^ (this.id_copilot >>> 32));
+        hash = 47 * hash + (int) (this.id_staff1 ^ (this.id_staff1 >>> 32));
+        hash = 47 * hash + (int) (this.id_staff2 ^ (this.id_staff2 >>> 32));
+        hash = 47 * hash + (int) (this.id_staff3 ^ (this.id_staff3 >>> 32));
+        hash = 47 * hash + (this.planned ? 1 : 0);
         return hash;
     }
 
@@ -233,9 +255,67 @@ public class Flight {
         if (!Objects.equals(this.departing_hour, other.departing_hour)) {
             return false;
         }
+        if (!Objects.equals(this.detailsAirport, other.detailsAirport)) {
+            return false;
+        }
         return true;
     }
 
-    
-    
+    public boolean isPlanned() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
+    public class InOut {
+
+        public String departingCity= "";
+        public String departingCountry= "";
+        public String arrivalCity = "";
+        public String arrivalCountry = "";
+
+        @Override
+        public String toString() {
+            return "InOut{" + "departingCity=" + departingCity + ", departingCountry=" + departingCountry + ", arrivalCity=" + arrivalCity + ", arrivalCountry=" + arrivalCountry + '}';
+        }
+
+        @Override
+        public int hashCode() {
+            int hash = 7;
+            hash = 37 * hash + Objects.hashCode(this.departingCity);
+            hash = 37 * hash + Objects.hashCode(this.departingCountry);
+            hash = 37 * hash + Objects.hashCode(this.arrivalCity);
+            hash = 37 * hash + Objects.hashCode(this.arrivalCountry);
+            return hash;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final InOut other = (InOut) obj;
+            if (!Objects.equals(this.departingCity, other.departingCity)) {
+                return false;
+            }
+            if (!Objects.equals(this.departingCountry, other.departingCountry)) {
+                return false;
+            }
+            if (!Objects.equals(this.arrivalCity, other.arrivalCity)) {
+                return false;
+            }
+            if (!Objects.equals(this.arrivalCountry, other.arrivalCountry)) {
+                return false;
+            }
+            return true;
+        }
+
+    }
+
 }

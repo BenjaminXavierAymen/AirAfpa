@@ -5,6 +5,12 @@
  */
 package airafpa;
 
+import dao.BookingDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Flight;
+
 /**
  *
  * @author Salim El Moussaoui <salim.elmoussaoui.afpa2017@gmail.com>
@@ -16,6 +22,17 @@ public class AirAfpa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        BookingDAO bookingInstance = new BookingDAO();
+        
+        try {
+            if(bookingInstance.queryBuilder("SELECT * FROM bookings WHERE flight_id=18").next()){
+                
+                System.out.println("ok");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     
 }
