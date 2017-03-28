@@ -5,6 +5,8 @@
  */
 package airafpa;
 
+import controller.AirportController;
+import dao.AirportDAO;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import view.AirportsView;
@@ -21,7 +23,9 @@ public class AirAfpa {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         
-      AirportsView flightView =  new AirportsView();
+        AirportDAO airportDAO = new AirportDAO();
+        AirportController airportController = new AirportController(airportDAO);
+      AirportsView flightView =  new AirportsView(airportController);
       
       frame.setTitle("Airports");
         frame.setSize(1000, 691);

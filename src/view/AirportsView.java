@@ -6,21 +6,33 @@
 package view;
 
 import controller.AirportController;
+import model.Airport;
+import dao.AirportDAO;
 import java.awt.TextField;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 
 /**
  *
  * @author SEGHAIER
  */
 public class AirportsView extends javax.swing.JPanel {
-
+    private AirportController airportController;
+    private boolean result;
+    
+    
+    
     /**
      * Creates new form AirportsView
      */
-    public AirportsView() {
+    public AirportsView(AirportController airportController) {
         initComponents();
-        AirportController airportController = new AirportController();
-        jt_Airport = airportController.addRowTable(jt_Airport);
+        this.airportController = airportController;
+        this.airportController.addRowTable(jt_Airport);
     }
 
     /**
@@ -209,11 +221,10 @@ public class AirportsView extends javax.swing.JPanel {
         
         int ligne = jt_Airport.getSelectedRow();
         String aita =  jt_Airport.getModel().getValueAt(ligne, 0).toString();
-        String city =  jt_Airport.getModel().getValueAt(ligne, 1).toString();
-        String country =  jt_Airport.getModel().getValueAt(ligne, 2).toString();
-        jt_aita.setText(aita);
-        jt_city.setText(city);
-        jt_country.setText(country);
+        Airport airportSelect = this.airportController.selectAirport(aita);        
+        jt_aita.setText(airportSelect.getAita());
+        jt_city.setText(airportSelect.getCity());
+        jt_country.setText(airportSelect.getCountry());
         
     }//GEN-LAST:event_jt_AirportMouseClicked
 
@@ -224,18 +235,42 @@ public class AirportsView extends javax.swing.JPanel {
     private void jt_AirportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_AirportKeyReleased
         int ligne = jt_Airport.getSelectedRow();
         String aita =  jt_Airport.getModel().getValueAt(ligne, 0).toString();
-        String city =  jt_Airport.getModel().getValueAt(ligne, 1).toString();
-        String country =  jt_Airport.getModel().getValueAt(ligne, 2).toString();
-        jt_aita.setText(aita);
-        jt_city.setText(city);
-        jt_country.setText(country);
+        
+        //controller 
+        Airport airportSelect = this.airportController.selectAirport(aita);
+        jt_aita.setText(airportSelect.getAita());
+        jt_city.setText(airportSelect.getCity());
+        jt_country.setText(airportSelect.getCountry());
     }//GEN-LAST:event_jt_AirportKeyReleased
 
     private void pb_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_deleteActionPerformed
-        String requete = "DELETE FROM airports WHERE aita LIKE ?";
         
+        
+        result = this.airportController.deleteAirport(jt_aita.getText());
+        jt_aita.setText("");
+        jt_city.setText("");
+        jt_country.setText("");
+        
+        if(result == true){
+            JOptionPane.showMessageDialog(null, "Aireport supprimé");
+            jt_Airport.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
+            new String [] {"code AITA", "ville", "pays"}));
+            
+            
+            this.airportController.addRowTable(jt_Airport);
+            //this.jt_Airport.removeAll();
+           // jt_Airport = airportController.addRowTable(jt_Airport);
+        } else 
+            JOptionPane.showMessageDialog(null, "cet Aireport contient des vols");
     }//GEN-LAST:event_pb_deleteActionPerformed
 
+
+    
+    
+    
+    
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

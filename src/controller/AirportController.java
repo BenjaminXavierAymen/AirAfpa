@@ -12,17 +12,25 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Airport;
 import model.Flight;
+import view.AirportsView;
 
 /**
  *
- * @author Formation
+ * @author SEGHAIER
  */
 public class AirportController {
-    private AirportDAO airportDAO = new AirportDAO();
+    private AirportDAO airportDAO;
+    private AirportsView airportsView;
+    
+   
+
+    public AirportController(AirportDAO airportDAO) {
+        this.airportDAO = airportDAO;
+    }
     
     public JTable addRowTable(JTable Jt_Airport){
-        DefaultTableModel model = (DefaultTableModel) Jt_Airport.getModel();
         
+        DefaultTableModel table = (DefaultTableModel) Jt_Airport.getModel();
         ArrayList<Airport> listAirport = airportDAO.getAll();
         
         
@@ -31,8 +39,23 @@ public class AirportController {
             rowData[0]= airport.getAita();
             rowData[1]= airport.getCity();
             rowData[2]= airport.getCountry();
-            model.addRow(rowData);
-        }
+            table.addRow(rowData);
+            
+        } 
         return Jt_Airport;
+    }
+    
+    public Airport selectAirport(String aita){
+        Airport airport = airportDAO.find(aita);
+        return airport;
+    }
+    
+    public boolean deleteAirport(String aita){
+        boolean result = false;
+        result = airportDAO.delete(aita);
+        
+        //airportsView.getJt_Airport().removeAll();
+        
+        return result;
     }
 }
