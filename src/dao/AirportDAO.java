@@ -10,7 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Airport;
+import model.Flight;
+import model.Flight.InOut;
 
 /**
  *
@@ -247,4 +251,9 @@ public class AirportDAO extends DAO<Airport, String> {
         return isValid;
     }
 
+    public boolean update(String airport) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
