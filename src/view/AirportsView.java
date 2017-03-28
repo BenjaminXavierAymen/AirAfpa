@@ -210,7 +210,12 @@ public class AirportsView extends javax.swing.JPanel {
     }//GEN-LAST:event_jt_aitaActionPerformed
 
     private void pb_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_resetActionPerformed
-        // TODO add your handling code here:
+        int ligne = jt_Airport.getSelectedRow();
+        String aita =  jt_Airport.getModel().getValueAt(ligne, 0).toString();
+        Airport airportSelect = this.airportController.selectAirport(aita);        
+        jt_aita.setText(airportSelect.getAita());
+        jt_city.setText(airportSelect.getCity());
+        jt_country.setText(airportSelect.getCountry());
     }//GEN-LAST:event_pb_resetActionPerformed
 
     private void pb_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_updateActionPerformed
