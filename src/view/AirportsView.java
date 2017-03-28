@@ -172,6 +172,8 @@ public class AirportsView extends javax.swing.JPanel {
         jl_aita.setText("Aita");
         jp_updateTabAirport.add(jl_aita, new java.awt.GridBagConstraints());
 
+        jt_aita.setEditable(false);
+        jt_aita.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         jt_aita.setPreferredSize(new java.awt.Dimension(150, 24));
         jt_aita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +221,22 @@ public class AirportsView extends javax.swing.JPanel {
     }//GEN-LAST:event_pb_resetActionPerformed
 
     private void pb_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_updateActionPerformed
-        // TODO add your handling code here:
+        
+      boolean  result = this.airportController.updateAirport(jt_aita.getText(),jt_city.getText(),jt_country.getText());
+      
+      if(result == true){
+            JOptionPane.showMessageDialog(null, "changement fait");
+            jt_Airport.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
+            new String [] {"code AITA", "ville", "pays"}));
+            
+            
+            this.airportController.addRowTable(jt_Airport);
+            //this.jt_Airport.removeAll();
+           // jt_Airport = airportController.addRowTable(jt_Airport);
+        } else 
+            JOptionPane.showMessageDialog(null, "impossible");
+        
     }//GEN-LAST:event_pb_updateActionPerformed
 
     private void jt_AirportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_AirportMouseClicked
@@ -246,6 +263,8 @@ public class AirportsView extends javax.swing.JPanel {
         jt_aita.setText(airportSelect.getAita());
         jt_city.setText(airportSelect.getCity());
         jt_country.setText(airportSelect.getCountry());
+        
+        
     }//GEN-LAST:event_jt_AirportKeyReleased
 
     private void pb_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pb_deleteActionPerformed

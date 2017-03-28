@@ -58,4 +58,12 @@ public class AirportController {
         
         return result;
     }
+    
+    public boolean updateAirport(String aita,String city,String country){
+        boolean result = false;
+        Airport updateAirport =  new Airport(aita, city, country);
+        result = airportDAO.update(updateAirport);
+        
+        return result;
+    }
 }

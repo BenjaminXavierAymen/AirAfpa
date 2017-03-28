@@ -250,6 +250,10 @@ public class AirportDAO extends DAO<Airport, String> {
         }
         return isValid;
     }
+
+    public boolean update(String airport) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
